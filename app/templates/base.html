@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html class="mdl-js">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>        
+        <link href="{{url_for('static', filename='css/estilos.css')}}" rel="stylesheet" type="text/css">
+        <script src="{{url_for('static',filename='js/form.js')}}"></script>
+     </head>
+
+    <body onload="agregarEventosValidación();" ondragstart="return false;" ondrop="return false;">        
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

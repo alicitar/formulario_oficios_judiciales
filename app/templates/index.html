@@ -1,0 +1,340 @@
+{% extends './base.html' %}
+
+{% block title %}{{data.title}}{% endblock %}
+ 
+{% block body %}
+   <header>
+      <h1>Oficios Judiciales</h1>
+      <p>
+         El usuario es el único responsable por los datos que carga en el presente formulario, en particular por los datos de identificación (nombre completo / denominación social / número de DNI / 
+         número de CUIT – CUIL) del DEMANDADO / CAUSANTE / FALLIDO, por cuanto estos datos impactan automáticamente en la base de clientes de esta entidad, 
+         permitiendo así una ágil identificación entre CLIENTES y NO CLIENTES.<br>
+         El archivo PDF que contiene la imagen del oficio judicial a gestionar queda sujeto a verificación por parte de esta entidad bancaria.
+      </p>      
+   </header>
+   <div id="formulario">
+      <h2>Datos Obligatorios</h2>
+      <div id="tipo">
+         <input type="radio" id="oficio" name="tipo" value="Oficio" checked>
+         <label for="oficio">Oficio</label>
+         <input type="radio" id="cedula" name="tipo" value="Cédula">
+         <label for="cedula">Cédula</label>
+      </div>
+
+      <div id="field_caratula">
+         <p><label for="caratula">Carátula</label></p></p>
+         <textarea required id="caratula" name="caratula" rows="4" cols="50"></textarea>
+
+      <div id="field_expediente">
+        <p><label for="expediente">Expediente N°</label></p>
+         <textarea id="expediente" name="expediente" rows="4" cols="50"></textarea>
+      </div>
+
+      <div id="poderes">
+         <p>Poderes Judiciales/Ministerios Públicos/AFIP/ARBA/Rentas Provinciales/AGIP</p>
+         <select name="select_poderes" id="select_poderes">
+            <option value="27">AFIP</option>
+            <option value="30">AGIP</option>
+            <option value="28">ARBA</option>
+            <option value="31">MINISTERIO PUBLICO FISCAL DE LA NACION</option>
+            <option value="26">MINISTERIOS PUBLICOS</option>
+            <option value="19">PODER JUDICIAL DE LA CIUDAD AUTONOMA DE BUENOS AIRES</option>
+            <option value="1">PODER JUDICIAL DE LA NACION</option>
+            <option value="2">PODER JUDICIAL DE LA PROVINCIA DE BUENOS AIRES</option>
+            <option value="3">PODER JUDICIAL DE LA PROVINCIA DE CATAMARCA</option>
+            <option value="22">PODER JUDICIAL DE LA PROVINCIA DE CHACO</option>
+            <option value="4">PODER JUDICIAL DE LA PROVINCIA DE CHUBUT</option>
+            <option value="24">PODER JUDICIAL DE LA PROVINCIA DE CORDOBA</option>
+            <option value="20">PODER JUDICIAL DE LA PROVINCIA DE CORRIENTES</option>
+            <option value="5">PODER JUDICIAL DE LA PROVINCIA DE ENTRE RIOS</option>
+            <option value="6">PODER JUDICIAL DE LA PROVINCIA DE FORMOSA</option>
+            <option value="7">PODER JUDICIAL DE LA PROVINCIA DE JUJUY</option>
+            <option value="8">PODER JUDICIAL DE LA PROVINCIA DE LA PAMPA</option>
+            <option value="9">PODER JUDICIAL DE LA PROVINCIA DE LA RIOJA</option>
+            <option value="10">PODER JUDICIAL DE LA PROVINCIA DE MENDOZA</option>
+            <option value="11">PODER JUDICIAL DE LA PROVINCIA DE MISIONES</option>
+            <option value="18">PODER JUDICIAL DE LA PROVINCIA DE NEUQUEN</option>
+            <option value="12">PODER JUDICIAL DE LA PROVINCIA DE RIO NEGRO</option>
+            <option value="15">PODER JUDICIAL DE LA PROVINCIA DE SALTA</option>
+            <option value="13">PODER JUDICIAL DE LA PROVINCIA DE SAN JUAN</option>
+            <option value="21">PODER JUDICIAL DE LA PROVINCIA DE SAN LUIS</option>
+            <option value="14">PODER JUDICIAL DE LA PROVINCIA DE SANTA CRUZ</option>
+            <option value="16">PODER JUDICIAL DE LA PROVINCIA DE SANTA FE</option>
+            <option value="23">PODER JUDICIAL DE LA PROVINCIA DE SANTIAGO DEL ESTERO</option>
+            <option value="25">PODER JUDICIAL DE LA PROVINCIA DE TIERRA DEL FUEGO</option>
+            <option value="17">PODER JUDICIAL DE LA PROVINCIA DE TUCUMAN</option>
+            <option value="32">POLICIA</option>
+            <option value="29">RENTAS PROVINCIALES</option>
+         </select>         
+      </div>
+
+      <div id="field_juzgado">
+        <p><label for="juzgado">Juzgado/Fiscalía/Defensoría/Asesoría/Curaduría/Organismo</label></p>
+         <textarea id="juzgado" name="juzgado" rows="4" cols="50"></textarea>
+      </div>
+
+      <div id="field_nro_juzgado">
+        <p><label for="nro_juzgado">N° Juzgado/Fiscalía/Defensoría/Asesoría/Curaduría/Organismo</label></p>
+         <textarea id="nro_juzgado" name="nro_juzgado" rows="4" cols="50"></textarea>
+      </div>
+
+      <div id="field_nro_secretaria">
+        <p><label for="nro_secretaria">N° Secretaría</label></p>
+         <textarea id="nro_secretaria" name="nro_secretaria" rows="4" cols="50"></textarea>
+      </div>
+
+      <div id="field_domicilio">
+         <p><label for="domicilio">Domicilio</label></p>
+         <input type="text" id="domicilio" name="domicilio">
+         <p>Dirección a la cual debe enviarse la respuesta del oficio judicial.</p>
+      </div>
+
+      <div id="field_cod_postal">
+         <p><label for="cod_postal">Código postal</label></p>
+         <input type="text" id="cod_postal" name="cod_postal">
+      </div>
+
+      <div id="select_tipo_contenedor">
+         <p>Tipo</p>
+         <select name="select_tipo" id="select_tipo">
+            <option value="E" selected="">Embargo</option>
+            <option value="I">Inhibición general de bienes</option>
+            <option value="S">Sucesión</option>
+            <option value="T">Transferencia</option>
+            <option value="L">Levantamiento</option>
+            <option value="P">Pedido de Informe</option>
+         </select>         
+      </div>
+
+      <div id="select_plazo_contenedor">
+         <p>Plazo</p>
+         <select name="select_plazo" id="select_plazo">
+            <option selected="" value="15">15 días</option>
+            <option value="10">10 días</option>
+            <option value="9">9 días</option>
+            <option value="8">8 días</option>
+            <option value="7">7 días</option>
+            <option value="6">6 días</option>
+            <option value="5">5 días</option>
+            <option value="4">4 días</option>
+            <option value="3">3 días</option>
+            <option value="2">2 días</option>
+            <option value="1">1 día</option>
+         </select>
+         <p>Plazo legal establecido por el juez para la respuesta del oficio. Si el mismo no fue detallado en la manda judicial será el establecido en el Código Procesal Civil y Comercial de la Nación.</p>         
+      </div>
+
+      <div id="select_tipo_fondos_contenedor">
+         <p>Tipo de fondos</p>
+         <select name="select_tipo_fondos" id="select_tipo_fondos">
+            <option value="0">Presentes</option>
+            <option value="1">Futuros</option>
+         </select>         
+      </div>
+
+      <div id="select_moneda_contenedor">
+         <p>Moneda</p>
+         <select name="select_moneda" id="select_moneda">
+            <option value="0">Pesos</option>
+            <option value="1">Dólares</option>
+         </select>         
+      </div>
+
+      <div id="field_importe">
+         <p><label for="importe">Importe</label></p>
+         <input type="text" id="importe" name="importe">
+      </div>
+
+      <h2>Datos para la Transferencia Bancaria</h2>
+
+      <div id="select_banco_contenedor">
+         <p>Banco</p>
+         <select name="select_banco" id="select_banco">
+            <option value="0340">BACS BANCO DE CREDITO Y SECURITIZACION S</option>
+            <option value="0017">BANCO BBVA ARGENTINA S.A.</option>
+            <option value="0426">BANCO BICA S.A.</option>
+            <option value="0336">BANCO BRADESCO ARGENTINA S.A.U.</option>
+            <option value="0331">BANCO CETELEM ARGENTINA S.A.</option>
+            <option value="0319">BANCO CMF S.A.</option>
+            <option value="0431">BANCO COINAG S.A.</option>
+            <option value="0389">BANCO COLUMBIA S.A.</option>
+            <option value="0299">BANCO COMAFI SOCIEDAD ANONIMA</option>
+            <option value="0191">BANCO CREDICOOP COOPERATIVO LIMITADO</option>
+            <option value="0432">BANCO DE COMERCIO S.A.</option>
+            <option value="0094">BANCO DE CORRIENTES S.A.</option>
+            <option value="0315">BANCO DE FORMOSA S.A.</option>
+            <option value="0007">BANCO DE GALICIA Y BUENOS AIRES S.A.U.</option>
+            <option value="0300">BANCO DE INVERSION Y COMERCIO EXTERIOR S</option>
+            <option value="0029">BANCO DE LA CIUDAD DE BUENOS AIRES</option>
+            <option value="0011">BANCO DE LA NACION ARGENTINA</option>
+            <option value="0093">BANCO DE LA PAMPA SOCIEDAD DE ECONOMIA M</option>
+            <option value="0014">BANCO DE LA PROVINCIA DE BUENOS AIRES</option>
+            <option value="0020">BANCO DE LA PROVINCIA DE CORDOBA S.A.</option>
+            <option value="0269">BANCO DE LA REPUBLICA ORIENTAL DEL URUGU</option>
+            <option value="0045">BANCO DE SAN JUAN S.A.</option>
+            <option value="0086">BANCO DE SANTA CRUZ S.A.</option>
+            <option value="0321">BANCO DE SANTIAGO DEL ESTERO S.A.</option>
+            <option value="0332">BANCO DE SERVICIOS FINANCIEROS S.A.</option>
+            <option value="0338">BANCO DE SERVICIOS Y TRANSACCIONES S.A.</option>
+            <option value="0198">BANCO DE VALORES S.A.</option>
+            <option value="0083">BANCO DEL CHUBUT S.A.</option>
+            <option value="0310">BANCO DEL SOL S.A.</option>
+            <option value="0044">BANCO HIPOTECARIO S.A.</option>
+            <option value="0322">BANCO INDUSTRIAL S.A.</option>
+            <option value="0147">BANCO INTERFINANZAS S.A.</option>
+            <option value="0259">BANCO ITAU ARGENTINA S.A.</option>
+            <option value="0305">BANCO JULIO SOCIEDAD ANONIMA</option>
+            <option value="0285">BANCO MACRO S.A.</option>
+            <option value="0254">BANCO MARIVA S.A.</option>
+            <option value="0341">BANCO MASVENTAS S.A.</option>
+            <option value="0281">BANCO MERIDIAN S.A.</option>
+            <option value="0065">BANCO MUNICIPAL DE ROSARIO</option>
+            <option value="0034">BANCO PATAGONIA S.A.</option>
+            <option value="0301">BANCO PIANO S.A.</option>
+            <option value="0268">BANCO PROVINCIA DE TIERRA DEL FUEGO</option>
+            <option value="0097">BANCO PROVINCIA DEL NEUQUEN SOCIEDAD ANO</option>
+            <option value="0309">BANCO RIOJA SOCIEDAD ANONIMA UNIPERSONAL</option>
+            <option value="0247">BANCO ROELA S.A.</option>
+            <option value="0277">BANCO SAENZ S.A.</option>
+            <option value="0072">BANCO SANTANDER RIO S.A.</option>
+            <option value="0435">BANCO SUCREDITO REGIONAL S.A.U.</option>
+            <option value="0027">BANCO SUPERVIELLE S.A.</option>
+            <option value="0312">BANCO VOII S.A.</option>
+            <option value="0262">BANK OF AMERICA, NATIONAL ASSOCIATION</option>
+            <option value="0515">BANK OF CHINA LIMITED SUCURSAL BUENOS AI</option>
+            <option value="0266">BNP PARIBAS</option>
+            <option value="0143">BRUBANK S.A.U.</option>
+            <option value="0016">CITIBANK N.A.</option>
+            <option value="0150">HSBC BANK ARGENTINA S.A.</option>
+            <option value="0015">INDUSTRIAL AND COMMERCIAL BANK OF CHINA</option>
+            <option value="0165">JPMORGAN CHASE BANK, NATIONAL ASSOCIATIO</option>
+            <option value="0386">NUEVO BANCO DE ENTRE RÍOS S.A.</option>
+            <option value="0330">NUEVO BANCO DE SANTA FE SOCIEDAD ANONIMA</option>
+            <option value="0311">NUEVO BANCO DEL CHACO S. A.</option>
+            <option value="0339">RCI BANQUE S.A.</option>
+            <option value="0384">WILOBANK S.A.</option>
+         </select>                  
+      </div>
+
+      <div id="field_sucursal">
+         <p><label for="sucursal">Sucursal</label></p>
+         <input type="text" id="sucursal" name="sucursal">
+      </div>
+
+      <div id="field_cuenta">
+         <p><label for="cuenta">Cuenta</label></p>
+         <input type="text" id="cuenta" name="cuenta">
+      </div>
+
+      <div id="field_cbu">
+         <p><label for="cbu">CBU</label></p>
+         <input type="text" id="cbu" name="cbu">
+      </div>
+
+      <h2>Demandado/fallido/causante</h2>
+
+      <h5>Persona física o jurídica respecto de la cual solicita información, embargo u otra gestión judicial.</h5>
+
+      <!--Agregar hasta 15 demandados -->
+      <div id="demandado_1" name="demandado">
+         <h3>Demandado/fallido/causante 1</h3>
+
+         <div id="field_nombre_apellido">
+            <p><label for="nombre_apellido">Nombre y Apellido</label></p>
+            <textarea id="nombre_apellido" name="nombre_apellido" rows="3" cols="20"></textarea>
+         </div>
+
+         <div id="contenedor_select_tipo_documento">
+            <p>Tipo de Documento</p>
+            <select name="select_tipo_documento" id="select_tipo_documento">
+                <option value="" selected="">Seleccionar</option>
+                <option value="1">DNI</option>
+                <option value="80">CUIT</option>
+                <option value="86">CUIL</option>
+                <option value="2">LE</option>
+                <option value="3">LC</option>
+                <option value="4">DNI Extranjero</option>
+                <option value="5">C.I. Extranjero</option>
+                <option value="6">Pasaporte</option>
+                <option value="8">CI</option>
+                <option value="81">CDI</option>
+            </select>
+         </div>
+
+         <div id="field_nro_documento">
+            <p><label for="nro_documento">Número de Documento</label></p>
+            <input type="text" id="nro_documento" name="nro_documento">
+         </div>         
+      </div>
+      <!---------------------------- -->
+
+      <div id="agregar_demandado">
+         <br>
+         <button onclick="eliminarRequerido()">ELIMINAR</button>
+         <button onclick="agregarRequerido()">AGREGAR OTRO REQUERIDO</button>
+         <h5>Podés cargar hasta un máximo de 15</h5>
+      </div>
+
+      <div id="field_nombre_solicitante">
+         <p><label for="nombre_solicitante">Nombre y Apellido</label></p>
+         <textarea id="nombre_solicitante" name="nombre_solicitante" rows="3" cols="20"></textarea>
+      </div>
+
+      <div id="field_matricula_solicitante">
+         <p><label for="nombre_solicitante">Matrícula / Cargo</label></p>
+         <textarea id="matricula_solicitante" name="matricula_solicitante" rows="3" cols="20"></textarea>
+      </div>
+
+      <div id="telefono">
+         <h4>Teléfono</h4>
+         <h4>¿Es celular?</h4>
+         <div id="tipo">
+            <input type="radio" id="celular" name="tipo_telefono" value="celular">
+            <label for="celular">Si</label>
+            <input type="radio" id="telefono" name="tipo_telefono" value="telefono" checked>
+            <label for="telefono">No</label>
+         </div> 
+
+         <div id="field_cod_area">
+            <p><label for="cod_area">Código de area (sin 0)</label></p>
+            <input type="text" id="cod_area" name="cod_area">
+         </div> 
+
+         <div id="field_nro_telefono">
+            <p><label for="nro_telefono" id="nro_telefono_label">N° de teléfono</label></p>
+            <input type="text" id="nro_telefono" name="nro_telefono">
+         </div>
+
+      </div>    
+
+         <div id="field_email">
+            <p><label for="email">E-mail</label></p>
+            <textarea id="email" name="email" rows="3" cols="20"></textarea>
+         </div>
+         <div id="msgErrorMail"></div>
+
+         <h4>Adjuntar Oficio</h4>
+         <h6>
+            Recordá que podés subir un solo archivo.<br>
+            Formato aceptado: PDF - Tamaño máximo: 20 MB.
+         </h6>
+
+         <input type="file" id="archivo" name="SELECCIONAR ARCHIVO" onchange="validarArchivo()">
+         <div id="msgArchivo"></div><br> 
+
+
+         <!-- <div id="captcha_container">
+               <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async="" defer=""></script>
+                <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcrGC0UAAAAACCWCKgJC3npK6bbfRy9HapzCJ4R" data-callback="vcc" data-expired-callback="recaptchaExpired"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-zcppbc1ls7x4" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcrGC0UAAAAACCWCKgJC3npK6bbfRy9HapzCJ4R&amp;co=aHR0cHM6Ly9hcHBzYmcuYmFuY29nYWxpY2lhLmNvbS5hcjo0NDM.&amp;hl=es&amp;v=QoukH5jSO3sKFzVEA7Vc8VgC&amp;size=normal&amp;cb=j1gkkyrlc972"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+               <span class="captcha-error error"></span>
+         </div><br> -->
+
+         <!--<button>CANCELAR</button> -->
+         <button onclick="cancelarFormulario()">CANCELAR</button><br><br>
+         <button onclick="enviarFormulario()">ACEPTAR</button><br><br>         
+         
+         <div id="msg"></div>
+
+
+   </div>   
+{% endblock %}
