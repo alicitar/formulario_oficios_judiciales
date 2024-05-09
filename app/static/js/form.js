@@ -27,6 +27,15 @@ let camposRequeridos = [
     'archivo'
 ];
 
+let ids_numericos = [
+    "nro_juzgado",
+    "importe",
+    "cbu",
+    "nro_documento",
+    "cod_area",
+    "nro_telefono"
+];
+
 
 // function agregarEventosValidación() {
 //     camposRequeridos.forEach((id) => {
@@ -47,8 +56,7 @@ function agregarEventosValidación() {
         {
             campoReq.addEventListener("blur", function(){ validarObligatorio(campoReq);}); 
         }
-
-        if (id === "cod_area" || id === "nro_telefono") {
+        if (ids_numericos.includes(id)) {
             campoReq.addEventListener("input", function(){ let valor = this.value; valor = valor.replace(/\D/g, ''); this.value = valor;});
         }
         
@@ -97,7 +105,7 @@ function enviarFormulario() {
     while(i < camposRequeridos.length && puedeEnviar){
         let element = document.getElementById(camposRequeridos[i]);
         if (element.value === "") {
-            alert("Falta completar: " + element.id)
+            //alert("Falta completar: " + element.id)
             puedeEnviar = false;
         }
         i++;
@@ -193,13 +201,22 @@ function enviar() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            // Obtenemos las respuestas del servicio siempre y cuando el estado sea 200 (se completo satisfactoriamente le envio)
-                let dato ='' ;
-                if (typeof(JSON.parse( xhttp.responseText))=='object'){
-                    dato =  JSON.parse( xhttp.responseText);
-                }else{
-                    dato = JSON.parse( JSON.parse( xhttp.responseText));
-                }               
+            let dato ='' ;
+            if (typeof(JSON.parse( xhttp.responseText))=='object'){
+                dato =  JSON.parse( xhttp.responseText);
+            }else{
+                dato = JSON.parse( JSON.parse( xhttp.responseText));
+            }
+            if (dato['errores'] != undefined){
+                let errores = '<ul style="color: red;">';
+                dato["errores"].forEach(function(error) {
+                    errores += '<li>' + error + '</li>';
+                });
+                errores += '</ul>';
+                document.getElementById('msg').innerHTML = '<span style = "color: red">Los siguientes campos contienen errores:</span>' + errores;
+                setTimeout(function () { document.getElementById('msg').innerHTML = ''; }, 5000);
+
+            }
         };
     } 
     xhttp.open("POST", "/ajax/CargarOficio", true);
